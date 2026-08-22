@@ -1,0 +1,682 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.72 0.17 55) 0%, oklch(0.65 0.2 32) 100%);
+  --gradient-glow: radial-gradient(circle at 20% 10%, oklch(0.75 0.16 60 / 0.35), transparent 50%),
+    radial-gradient(circle at 80% 90%, oklch(0.5 0.18 300 / 0.25), transparent 55%);
+  --shadow-glow: 0 20px 60px -20px oklch(0.65 0.2 40 / 0.45);
+  --shadow-card: 0 1px 2px oklch(0.15 0.03 40 / 0.06), 0 8px 32px -12px oklch(0.15 0.03 40 / 0.12);
+}
+
+/* ── 1. LIGHT THEME (Crisp, High-Contrast Modern Light) ────────── */
+:root {
+  --radius: 0.75rem;
+  color-scheme: light;
+  --background: oklch(0.985 0.005 60);
+  --foreground: oklch(0.16 0.02 55);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.02 55);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.02 55);
+  --primary: oklch(0.64 0.2 42);
+  --primary-foreground: oklch(0.99 0.01 80);
+  --secondary: oklch(0.94 0.015 65);
+  --secondary-foreground: oklch(0.22 0.03 50);
+  --muted: oklch(0.94 0.012 70);
+  --muted-foreground: oklch(0.48 0.02 60);
+  --accent: oklch(0.92 0.03 70);
+  --accent-foreground: oklch(0.24 0.05 45);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0.01 80);
+  --success: oklch(0.65 0.16 150);
+  --success-foreground: oklch(0.99 0.01 80);
+  --border: oklch(0.88 0.015 70);
+  --input: oklch(0.9 0.015 70);
+  --ring: oklch(0.64 0.2 42);
+}
+
+/* ── 2. DARK THEME (Warm Obsidian & Amber Luminous Dark) ────────── */
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.15 0.015 60);
+  --foreground: oklch(0.97 0.01 80);
+  --card: oklch(0.20 0.02 55);
+  --card-foreground: oklch(0.97 0.01 80);
+  --popover: oklch(0.20 0.02 55);
+  --popover-foreground: oklch(0.97 0.01 80);
+  --primary: oklch(0.76 0.18 55);
+  --primary-foreground: oklch(0.14 0.02 60);
+  --secondary: oklch(0.25 0.025 55);
+  --secondary-foreground: oklch(0.97 0.01 80);
+  --muted: oklch(0.24 0.02 55);
+  --muted-foreground: oklch(0.7 0.02 70);
+  --accent: oklch(0.3 0.04 50);
+  --accent-foreground: oklch(0.97 0.01 80);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 80);
+  --success: oklch(0.72 0.15 155);
+  --success-foreground: oklch(0.14 0.02 60);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.76 0.18 55);
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.78 0.17 55) 0%, oklch(0.68 0.2 35) 100%);
+  --gradient-glow: radial-gradient(circle at 20% 10%, oklch(0.75 0.16 60 / 0.25), transparent 50%),
+    radial-gradient(circle at 80% 90%, oklch(0.5 0.18 300 / 0.18), transparent 55%);
+  --shadow-glow: 0 20px 60px -20px oklch(0.65 0.2 40 / 0.35);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.4), 0 8px 32px -12px oklch(0 0 0 / 0.5);
+}
+
+/* ── 3. AMOLED THEME (Pure Pitch Black & Crisp Monochrome White) ──── */
+.amoled {
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(1 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.08 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.12 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.18 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.9 0 0);
+  --destructive-foreground: oklch(0 0 0);
+  --success: oklch(0.95 0 0);
+  --success-foreground: oklch(0 0 0);
+  --border: oklch(1 0 0 / 22%);
+  --input: oklch(1 0 0 / 20%);
+  --ring: oklch(1 0 0);
+
+  --gradient-hero: linear-gradient(135deg, oklch(1 0 0) 0%, oklch(0.75 0 0) 100%);
+  --gradient-glow: radial-gradient(circle at 20% 10%, oklch(1 0 0 / 0.08), transparent 50%),
+    radial-gradient(circle at 80% 90%, oklch(1 0 0 / 0.04), transparent 55%);
+  --shadow-glow: 0 0 0 1px oklch(1 0 0 / 0.22);
+  --shadow-card: 0 0 0 1px oklch(1 0 0 / 0.18);
+}
+
+.amoled header {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  border-bottom-color: oklch(1 0 0 / 20%) !important;
+}
+
+.amoled .bg-card {
+  background-color: #000000 !important;
+  border-color: oklch(1 0 0 / 20%) !important;
+}
+
+.amoled .bg-secondary {
+  background-color: oklch(0.08 0 0) !important;
+  border-color: oklch(1 0 0 / 16%) !important;
+}
+
+.amoled .bg-muted {
+  background-color: oklch(0.12 0 0) !important;
+}
+
+.amoled svg circle.stroke-primary {
+  stroke: #ffffff !important;
+}
+
+.amoled svg circle.stroke-border {
+  stroke: oklch(1 0 0 / 18%) !important;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  /* ── Responsive typography scale ──────────────────────────────── */
+  html {
+    font-size: 14px;   /* mobile-first */
+  }
+  @media (min-width: 640px)  { html { font-size: 15px; } }  /* tablet */
+  @media (min-width: 1024px) { html { font-size: 16px; } }  /* desktop */
+  @media (min-width: 1920px) { html { font-size: 18px; } }  /* Full HD / TV */
+  @media (min-width: 2560px) { html { font-size: 22px; } }  /* 4K / large TV */
+
+  html, body {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Minimum touch targets on touch devices ───────────────────── */
+  @media (pointer: coarse) {
+    button, [role="button"], select {
+      min-height: 44px;
+    }
+  }
+}
+
+@layer components {
+  .depth-surface {
+    position: relative;
+    isolation: isolate;
+    transform-style: preserve-3d;
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease;
+    box-shadow:
+      var(--shadow-card),
+      inset 0 1px 0 oklch(1 0 0 / 10%),
+      inset 0 -1px 0 oklch(0 0 0 / 12%);
+  }
+
+  .depth-surface::before {
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border-radius: inherit;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(135deg, oklch(1 0 0 / 7%), transparent 28%, transparent 72%, oklch(0 0 0 / 5%));
+  }
+
+  .depth-surface:hover {
+    transform: perspective(1200px) rotateX(1deg) translateY(-3px);
+    box-shadow:
+      var(--shadow-card),
+      0 18px 34px -24px oklch(0 0 0 / 45%),
+      inset 0 1px 0 oklch(1 0 0 / 12%),
+      inset 0 -1px 0 oklch(0 0 0 / 12%);
+  }
+
+  .calendar-hero {
+    --calendar-mountain-back: color-mix(in oklab, var(--foreground) 14%, var(--card));
+    --calendar-mountain-front: color-mix(in oklab, var(--foreground) 24%, var(--card));
+    background: linear-gradient(160deg, color-mix(in oklab, var(--primary) 12%, var(--card)), var(--card));
+    isolation: isolate;
+  }
+
+  .calendar-sun {
+    position: absolute;
+    right: 15%;
+    top: 8px;
+    width: 58px;
+    height: 58px;
+    border-radius: 999px;
+    background: var(--primary);
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+
+  .calendar-mountain {
+    position: absolute;
+    right: -5%;
+    bottom: -1px;
+    width: 115%;
+    height: 72%;
+    clip-path: polygon(0 100%, 0 72%, 15% 49%, 28% 68%, 42% 30%, 56% 63%, 72% 21%, 87% 56%, 100% 34%, 100% 100%);
+  }
+
+  .calendar-mountain-back {
+    z-index: -1;
+    background: color-mix(in oklab, var(--foreground) 14%, var(--card));
+    opacity: 0.95;
+  }
+
+  .calendar-mountain-front {
+    z-index: 0;
+    right: -15%;
+    bottom: -14px;
+    width: 125%;
+    height: 58%;
+    background: color-mix(in oklab, var(--foreground) 24%, var(--card));
+    clip-path: polygon(0 100%, 0 70%, 18% 55%, 31% 75%, 48% 35%, 61% 67%, 78% 45%, 90% 66%, 100% 52%, 100% 100%);
+  }
+
+  .calendar-scene-icon {
+    position: absolute;
+    z-index: 1;
+    right: 9%;
+    bottom: 5px;
+    width: 58px;
+    height: 58px;
+    color: oklch(0.68 0.16 65);
+    filter: drop-shadow(0 5px 5px oklch(0 0 0 / 35%));
+    transform: perspective(160px) rotateY(-12deg) rotateX(5deg);
+  }
+
+  .depth-control {
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 14%),
+      inset 0 -2px 0 oklch(0 0 0 / 16%),
+      0 3px 8px -4px oklch(0 0 0 / 45%);
+  }
+
+  .depth-control:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 18%),
+      inset 0 -2px 0 oklch(0 0 0 / 16%),
+      0 7px 14px -6px oklch(0 0 0 / 55%);
+  }
+
+  .depth-control:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 3px oklch(0 0 0 / 20%);
+  }
+
+  .theme-transition,
+  .theme-transition * {
+    transition-property: background-color, color, border-color, box-shadow, fill, stroke !important;
+    transition-duration: 260ms !important;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  @media (hover: hover) {
+    button:not(:disabled),
+    a,
+    [role="button"] {
+      will-change: transform;
+    }
+
+    button:not(:disabled):hover,
+    a:hover,
+    [role="button"]:hover {
+      filter: saturate(1.04);
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    transition: outline-offset 160ms ease, outline-color 160ms ease;
+  }
+
+  button.bg-primary,
+  a.bg-primary {
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 18%),
+      inset 0 -2px 0 oklch(0 0 0 / 16%),
+      0 5px 12px -6px oklch(0 0 0 / 55%);
+  }
+
+  button.bg-primary:hover,
+  a.bg-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 22%),
+      inset 0 -2px 0 oklch(0 0 0 / 16%),
+      0 9px 16px -7px oklch(0 0 0 / 65%);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow: hidden;
+  }
+  button, a, input, select, [role="button"] {
+    transition:
+      background-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  button:active, [role="button"]:active {
+    transform: scale(0.97);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-muted);
+    border-radius: 9999px;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes accordion-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 320ms ease-out both;
+}
+
+@utility animate-accordion-open {
+  animation: accordion-open 200ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes aura-pulse {
+  0%, 100% { filter: drop-shadow(0 0 4px color-mix(in oklab, var(--primary) 55%, transparent)); }
+  50% { filter: drop-shadow(0 0 14px color-mix(in oklab, var(--primary) 85%, transparent)); }
+}
+
+@utility animate-aura {
+  animation: aura-pulse 2.4s ease-in-out infinite;
+}
+
+@utility glow-ring {
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 45%, transparent),
+    0 0 24px -4px color-mix(in oklab, var(--primary) 60%, transparent);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 18px color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+/* ── Mascot widget ─────────────────────────────────────────────── */
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes mascot-pop {
+  0% { transform: scale(1, 1); }
+  35% { transform: scale(1.14, 0.86); }
+  70% { transform: scale(0.94, 1.08); }
+  100% { transform: scale(1, 1); }
+}
+@keyframes mascot-hype {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2, 0.82) rotate(-6deg); }
+  60% { transform: scale(0.9, 1.14) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes mascot-spark {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--spark-dx, 0), var(--spark-dy, -40px)) scale(0.6); }
+}
+
+@utility animate-mascot-bob { animation: mascot-bob 3.2s ease-in-out infinite; }
+@utility animate-mascot-pop { animation: mascot-pop 320ms ease-out; }
+@utility animate-mascot-hype { animation: mascot-hype 420ms ease-out; }
+
+/* ── Premium animation layer ──────────────────────────────────── */
+
+/* Entrance keyframes */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes reveal-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes reveal-scale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes reveal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Stagger entrance utility classes */
+@utility animate-reveal-up {
+  animation: reveal-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+@utility animate-reveal-down {
+  animation: reveal-down 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+@utility animate-reveal-left {
+  animation: reveal-left 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+@utility animate-reveal-right {
+  animation: reveal-right 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+@utility animate-reveal-scale {
+  animation: reveal-scale 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+@utility animate-reveal-fade {
+  animation: reveal-fade 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+
+/* Slide-up for bottom navigation bar */
+@keyframes slide-up-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@utility animate-slide-up-in {
+  animation: slide-up-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Scroll-reveal: hidden until IntersectionObserver triggers */
+@utility scroll-reveal {
+  opacity: 0;
+}
+.scroll-reveal[data-revealed] {
+  /* animation class is set by JS via data-anim */
+}
+.scroll-reveal[data-revealed][data-anim="up"] {
+  animation: reveal-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+.scroll-reveal[data-revealed][data-anim="left"] {
+  animation: reveal-left 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+.scroll-reveal[data-revealed][data-anim="right"] {
+  animation: reveal-right 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+.scroll-reveal[data-revealed][data-anim="scale"] {
+  animation: reveal-scale 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+.scroll-reveal[data-revealed][data-anim="fade"] {
+  animation: reveal-fade 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+
+/* Stroke-dash animation for SVG rings */
+@utility animate-stroke {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Progress bar width animation */
+@utility animate-progress {
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Card hover — opt-in utility */
+@utility hover-lift {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+/* Button premium hover — opt-in utility */
+@utility hover-btn {
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+/* Tab / nav active indicator transition */
+@utility animate-tab-indicator {
+  transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Header scroll transition */
+@utility animate-header {
+  transition: background-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Mobile: reduce movement distances */
+@media (max-width: 640px) {
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes reveal-left {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes reveal-right {
+    from { opacity: 0; transform: translateX(16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+}
+
+/* ── macOS-Style Fluid Tab & Page Transitions ─────────────────────── */
+@keyframes macos-tab-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.988) translateY(6px);
+    filter: blur(3px);
+  }
+  60% {
+    opacity: 0.9;
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@utility animate-macos-tab {
+  animation: macos-tab-enter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes roadmap-backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes roadmap-panel-enter {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes roadmap-backdrop-exit {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes roadmap-panel-exit {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+
+.roadmap-modal-backdrop {
+  animation: roadmap-backdrop-enter 220ms ease-out both;
+}
+
+.roadmap-modal-panel {
+  animation: roadmap-panel-enter 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.roadmap-modal-closing {
+  animation: roadmap-backdrop-exit 220ms ease-in both;
+}
+
+.roadmap-modal-closing .roadmap-modal-panel {
+  animation: roadmap-panel-exit 220ms ease-in both;
+}
+
+@utility macos-pill {
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 14%), 0 2px 8px -2px oklch(0 0 0 / 25%);
+}
+
+@utility macos-segmented-track {
+  background-color: oklch(0.5 0 0 / 8%);
+  border: 1px solid oklch(1 0 0 / 10%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
